@@ -15,7 +15,7 @@ function getDate(year: string, month: string, day: string, addDay = 0): string {
   return `${y + '-' + m + '-' + d}`
 }
 
-export function renderSearchFormBlock (): void {
+export function renderSearchFormBlock (dateStart = '', dateEnd = ''): void {
   const date = new Date()
   const y = String(date.getFullYear())
   const m = String(date.getMonth())
@@ -46,11 +46,11 @@ export function renderSearchFormBlock (): void {
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value="${defaultStart}" min="${min}" max="${max}" name="checkin" />
+            <input id="check-in-date" type="date" value="${dateStart ? dateStart : defaultStart}" min="${min}" max="${max}" name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="${defaultEnd}" min="${min}" max="${max}" name="checkout" />
+            <input id="check-out-date" type="date" value="${dateEnd ? dateEnd : defaultEnd}" min="${min}" max="${max}" name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
