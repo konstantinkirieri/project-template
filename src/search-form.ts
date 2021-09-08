@@ -1,20 +1,5 @@
 import { renderBlock } from './lib.js'
 
-function getLastDayOfMonth(year, month) {
-  const date = new Date(year, month + 1, 0);
-  return String(date.getDate());
-}
-
-function getDate(year: string, month: string, day: string, addDay = 0): string {
-  const date = new Date(+year, +month, +day + addDay);
-  const y = String(date.getFullYear())
-  let m = String(date.getMonth() + 1)
-  if(m.length === 1) m = '0' + m
-  let d = String(date.getDate())
-  if(d.length === 1) d = '0' + d
-  return `${y + '-' + m + '-' + d}`
-}
-
 export function renderSearchFormBlock (dateStart = '', dateEnd = ''): void {
   const date = new Date()
   const y = String(date.getFullYear())
@@ -26,6 +11,21 @@ export function renderSearchFormBlock (dateStart = '', dateEnd = ''): void {
   const max = getDate(y, maxM, getLastDayOfMonth(y, maxM))
   const defaultStart = getDate(y, m, d, 1)
   const defaultEnd = getDate(y, m, d, 3)
+
+  function getLastDayOfMonth(year, month) {
+    const date = new Date(year, month + 1, 0);
+    return String(date.getDate());
+  }
+  
+  function getDate(year: string, month: string, day: string, addDay = 0): string {
+    const date = new Date(+year, +month, +day + addDay);
+    const y = String(date.getFullYear())
+    let m = String(date.getMonth() + 1)
+    if(m.length === 1) m = '0' + m
+    let d = String(date.getDate())
+    if(d.length === 1) d = '0' + d
+    return `${y + '-' + m + '-' + d}`
+  }
   
   renderBlock(
     'search-form-block',
