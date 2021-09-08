@@ -2,22 +2,17 @@ import { renderBlock } from './lib.js'
 
 function getLastDayOfMonth(year, month) {
   const date = new Date(year, month + 1, 0);
-  console.log('last day: ' + date.getDate())
   return String(date.getDate());
 }
 
-function conversionToString (date: Date): string {
+function getDate(year: string, month: string, day: string, addDay = 0): string {
+  const date = new Date(+year, +month, +day + addDay);
   const y = String(date.getFullYear())
   let m = String(date.getMonth() + 1)
   if(m.length === 1) m = '0' + m
   let d = String(date.getDate())
   if(d.length === 1) d = '0' + d
   return `${y + '-' + m + '-' + d}`
-}
-
-function getDate(year: string, month: string, day: string, addDay = 0): string {
-  const date = new Date(+year, +month, +day + addDay);
-  return conversionToString(date)
 }
 
 export function renderSearchFormBlock (): void {
