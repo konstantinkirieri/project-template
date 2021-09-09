@@ -2,23 +2,23 @@ import { renderBlock } from './lib.js'
 
 export function renderSearchFormBlock (dateStart = '', dateEnd = ''): void {
   const date = new Date()
-  const y = String(date.getFullYear())
-  const m = String(date.getMonth())
-  const d = String(date.getDate())
-  const maxM = String(date.getMonth() + 1)
+  const y = date.getFullYear()
+  const m = date.getMonth()
+  const d = date.getDate()
+  const maxM = date.getMonth() + 1
 
   const min = getDate(y, m, d)
   const max = getDate(y, maxM, getLastDayOfMonth(y, maxM))
   const defaultStart = getDate(y, m, d, 1)
   const defaultEnd = getDate(y, m, d, 3)
 
-  function getLastDayOfMonth(year, month) {
+  function getLastDayOfMonth(year: number, month: number) {
     const date = new Date(year, month + 1, 0);
-    return String(date.getDate());
+    return date.getDate();
   }
   
-  function getDate(year: string, month: string, day: string, addDay = 0): string {
-    const date = new Date(+year, +month, +day + addDay);
+  function getDate(year: number, month: number, day: number, addDay = 0): string {
+    const date = new Date(year, month, day + addDay);
     const y = String(date.getFullYear())
     let m = String(date.getMonth() + 1)
     if(m.length === 1) m = '0' + m
