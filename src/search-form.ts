@@ -35,7 +35,7 @@ export function renderSearchFormBlock (dateStart = '', dateEnd = ''): void {
         <div class="row">
           <div>
             <label for="city">Город</label>
-            <input id="city" type="text" disabled value="Санкт-Петербург" />
+            <input id="city" type="text" disabled value="Санкт-Петербург" name="city"/>
             <input type="hidden" disabled value="59.9386,30.3141" />
           </div>
           <!--<div class="providers">
